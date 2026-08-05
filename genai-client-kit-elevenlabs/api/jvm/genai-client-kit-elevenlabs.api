@@ -1,3 +1,33 @@
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/AudioIsolationRequest {
+	public fun <init> ([BLjava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()[B
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy ([BLjava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/AudioIsolationRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/AudioIsolationRequest;[BLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/AudioIsolationRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudio ()[B
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getMimeType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;[B)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()[B
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;[B)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource;Ljava/lang/String;Ljava/lang/String;[BILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBytes ()[B
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getMimeType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentSummary {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -37,6 +67,12 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgen
 	public final fun getNextCursor ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAudioIsolationClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun isolate (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/AudioIsolationRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationDetail {
@@ -99,6 +135,45 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConv
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun createDubbing (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createDubbing$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingClient;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/DubbingSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getDubbedAudio (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getDubbingStatus (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingJob {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Double;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Double;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingJob;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingJob;Ljava/lang/String;Ljava/lang/Double;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingJob;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDubbingId ()Ljava/lang/String;
+	public final fun getExpectedDurationSeconds ()Ljava/lang/Double;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingStatus {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingStatus;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingStatus;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubbingStatus;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDubbingId ()Ljava/lang/String;
+	public final fun getError ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getTargetLanguages ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsModels {
 	public static final field ELEVEN_FLASH_V2_5 Ljava/lang/String;
 	public static final field ELEVEN_MULTILINGUAL_V2 Ljava/lang/String;
@@ -117,12 +192,26 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsReal
 	public static synthetic fun connect$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsRealtimeClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSoundEffectsClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun generate (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSpeechClient : io/github/ronjunevaldoz/genaiclient/SpeechClient {
 	public static final field STREAM_CHUNK_SIZE I
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun synthesizeSpeech (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun synthesizeSpeechStream (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSpeechToSpeechClient {
+	public static final field STREAM_CHUNK_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun convert (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun convertStream (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn {
@@ -180,6 +269,46 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoic
 	public final fun getVoice (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getVoiceSettings (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun listVoices (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun component3 ()Ljava/lang/Double;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDurationSeconds ()Ljava/lang/Double;
+	public final fun getPromptInfluence ()Ljava/lang/Double;
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest {
+	public fun <init> ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Z)V
+	public synthetic fun <init> ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()[B
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public final fun component7 ()Z
+	public final fun copy ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Z)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;ZILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/SpeechToSpeechRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudio ()[B
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getMimeType ()Ljava/lang/String;
+	public final fun getModel ()Ljava/lang/String;
+	public final fun getRemoveBackgroundNoise ()Z
+	public final fun getVoiceId ()Ljava/lang/String;
+	public final fun getVoiceSettings ()Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/VoiceSample {

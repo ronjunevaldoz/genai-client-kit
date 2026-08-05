@@ -5,9 +5,9 @@ A Kotlin Multiplatform client library for generative media APIs — ElevenLabs (
 Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 
 > Status: `0.1.0`, pre-1.0. Per SemVer, the public API may still change without a major
-> version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices, and
-> Conversational AI agents; speech-to-speech, sound effects, dubbing, and audio isolation are
-> still missing. Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
+> version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices,
+> Conversational AI agents, speech-to-speech, sound effects, audio isolation, and dubbing.
+> Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
 
@@ -32,7 +32,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` (Conversational AI) |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient` |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -108,6 +108,24 @@ val agent = agents.createAgent(
 val conversations = ElevenLabsConversationsClient(apiKey = "...")
 val page = conversations.listConversations(agentId = agent.agentId)
 val detail = conversations.getConversation(page.conversations.first().conversationId)
+```
+
+### Speech-to-speech, sound effects, audio isolation, dubbing
+
+```kotlin
+val sts = ElevenLabsSpeechToSpeechClient(apiKey = "...")
+val revoiced = sts.convert(SpeechToSpeechRequest(audio = clipBytes, filename = "clip.mp3", mimeType = "audio/mpeg", voiceId = "voice-id", model = ElevenLabsModels.ELEVEN_MULTILINGUAL_V2))
+
+val effects = ElevenLabsSoundEffectsClient(apiKey = "...")
+val doorCreak = effects.generate(SoundEffectRequest(text = "a door creaking open"))
+
+val isolation = ElevenLabsAudioIsolationClient(apiKey = "...")
+val voiceOnly = isolation.isolate(AudioIsolationRequest(audio = noisyClipBytes, filename = "clip.mp3", mimeType = "audio/mpeg"))
+
+val dubbing = ElevenLabsDubbingClient(apiKey = "...")
+val job = dubbing.createDubbing(DubbingSource("clip.mp4", "video/mp4", videoBytes), targetLanguage = "es")
+// poll dubbing.getDubbingStatus(job.dubbingId) until status == "dubbed", then:
+val dubbedAudio = dubbing.getDubbedAudio(job.dubbingId, languageCode = "es")
 ```
 
 ## API surface rules
