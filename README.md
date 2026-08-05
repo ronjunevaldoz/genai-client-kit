@@ -8,8 +8,8 @@ Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 > version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices,
 > Conversational AI agents (including knowledge base and Twilio outbound calling), speech-to-speech,
 > sound effects, audio isolation, dubbing, models listing, account/subscription info, text-to-voice
-> (voice design), the shared voice library, generation history, and forced alignment. Missing:
-> the Music API, pronunciation dictionaries, Projects/Studio, and webhooks. Suno and ByteDance
+> (voice design), the shared voice library, generation history, forced alignment, the Music API,
+> and pronunciation dictionaries. Missing: Projects/Studio and webhooks. Suno and ByteDance
 > currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
@@ -35,7 +35,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient`, `ElevenLabsTextToVoiceClient` (voice design), `ElevenLabsVoiceLibraryClient`, `ElevenLabsHistoryClient`, `ElevenLabsForcedAlignmentClient` |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient`, `ElevenLabsTextToVoiceClient` (voice design), `ElevenLabsVoiceLibraryClient`, `ElevenLabsHistoryClient`, `ElevenLabsForcedAlignmentClient`, `ElevenLabsMusicClient`, `ElevenLabsPronunciationDictionariesClient` |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -173,6 +173,23 @@ val audio = history.getHistoryItemAudio(page.items.first().historyItemId)
 
 val alignment = ElevenLabsForcedAlignmentClient(apiKey = "...")
 val timings = alignment.align(audio = clipBytes, filename = "clip.mp3", mimeType = "audio/mpeg", text = "Hello there")
+```
+
+### Music and pronunciation dictionaries
+
+```kotlin
+val music = ElevenLabsMusicClient(apiKey = "...")
+val plan = music.createCompositionPlan(prompt = "An upbeat synthwave track", musicLengthMs = 30000)
+val clip = music.compose(compositionPlan = plan)
+// or straight from a prompt, skipping the plan step:
+val quickClip = music.compose(prompt = "A calm lo-fi beat", musicLengthMs = 15000)
+
+val dictionaries = ElevenLabsPronunciationDictionariesClient(apiKey = "...")
+val dictionary = dictionaries.createFromRules(
+    name = "Product Names",
+    rules = listOf(PronunciationRule("Kubernetes", PronunciationRuleType.ALIAS, alias = "koo-ber-NET-eez")),
+)
+// then pass dictionary.id into a TTS/dubbing request via provider-specific options once supported
 ```
 
 ## API surface rules

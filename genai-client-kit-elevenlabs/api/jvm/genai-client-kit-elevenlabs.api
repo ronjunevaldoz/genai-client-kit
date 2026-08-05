@@ -318,6 +318,18 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsMode
 	public final fun listModels (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsMusicClient {
+	public static final field STREAM_CHUNK_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun compose (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun compose$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsMusicClient;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun composeStream (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Integer;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun composeStream$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsMusicClient;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Integer;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public final fun createCompositionPlan (Ljava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createCompositionPlan$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsMusicClient;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsOutboundCallClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -355,6 +367,52 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPhon
 	public final fun getPhoneNumber ()Ljava/lang/String;
 	public final fun getPhoneNumberId ()Ljava/lang/String;
 	public final fun getProvider ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesClient {
+	public static final field DEFAULT_PAGE_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun addRules (Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun createFromRules (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createFromRules$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesClient;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun downloadPls (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getDictionary (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listDictionaries (ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listDictionaries$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesClient;ILjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun removeRules (Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesPage {
+	public fun <init> (Ljava/util/List;ZLjava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;ZLjava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesPage;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesPage;Ljava/util/List;ZLjava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionariesPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDictionaries ()Ljava/util/List;
+	public final fun getHasMore ()Z
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionary {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionary;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionary;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsPronunciationDictionary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLatestVersionId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -582,6 +640,34 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/KnowledgeBaseD
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/KnowledgeBaseDocumentType;
 	public static fun values ()[Lio/github/ronjunevaldoz/genaiclient/elevenlabs/KnowledgeBaseDocumentType;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRule {
+	public fun <init> (Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRule;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRule;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRule;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlias ()Ljava/lang/String;
+	public final fun getAlphabet ()Ljava/lang/String;
+	public final fun getPhoneme ()Ljava/lang/String;
+	public final fun getStringToReplace ()Ljava/lang/String;
+	public final fun getType ()Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType : java/lang/Enum {
+	public static final field ALIAS Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
+	public static final field PHONEME Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
+	public static fun values ()[Lio/github/ronjunevaldoz/genaiclient/elevenlabs/PronunciationRuleType;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/SoundEffectRequest {
