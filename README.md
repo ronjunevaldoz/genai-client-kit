@@ -5,8 +5,9 @@ A Kotlin Multiplatform client library for generative media APIs — ElevenLabs (
 Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 
 > Status: `0.1.0`, pre-1.0. Per SemVer, the public API may still change without a major
-> version bump until `1.0.0` ships. ElevenLabs is implemented; Suno and ByteDance currently
-> ship as contract-only stubs (see [Modules](#modules)).
+> version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices, and
+> Conversational AI agents; speech-to-speech, sound effects, dubbing, and audio isolation are
+> still missing. Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
 
@@ -31,7 +32,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS) |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` (Conversational AI) |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -83,6 +84,30 @@ session.send(RealtimeInputChunk.Text("Streaming this "))
 session.send(RealtimeInputChunk.Text("as it's typed."))
 session.flush()
 session.close()
+```
+
+### Voices
+
+```kotlin
+val voices = ElevenLabsVoicesClient(apiKey = "...")
+
+val library = voices.listVoices()
+val cloned = voices.addVoice(name = "My Voice", samples = listOf(VoiceSample("sample.mp3", "audio/mpeg", audioBytes)))
+voices.editVoiceSettings(cloned.voiceId, VoiceSettings(stability = 0.6, similarityBoost = 0.8))
+```
+
+### Conversational AI
+
+```kotlin
+val agents = ElevenLabsAgentsClient(apiKey = "...")
+val agent = agents.createAgent(
+    name = "Support Bot",
+    conversationConfig = buildJsonObject { put("first_message", "Hi, how can I help?") },
+)
+
+val conversations = ElevenLabsConversationsClient(apiKey = "...")
+val page = conversations.listConversations(agentId = agent.agentId)
+val detail = conversations.getConversation(page.conversations.first().conversationId)
 ```
 
 ## API surface rules

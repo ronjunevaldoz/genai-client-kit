@@ -1,0 +1,199 @@
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentSummary {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentSummary;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentSummary;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentSummary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAgentId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsClient {
+	public static final field DEFAULT_PAGE_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun createAgent (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createAgent$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsClient;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun deleteAgent (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAgent (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listAgents (ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listAgents$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsClient;ILjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsPage {
+	public fun <init> (Ljava/util/List;ZLjava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;ZLjava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsPage;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsPage;Ljava/util/List;ZLjava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsAgentsPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAgents ()Ljava/util/List;
+	public final fun getHasMore ()Z
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationDetail {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationDetail;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationDetail;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationDetail;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAgentId ()Ljava/lang/String;
+	public final fun getConversationId ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getTranscript ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationSummary {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationSummary;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationSummary;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationSummary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAgentId ()Ljava/lang/String;
+	public final fun getCallDurationSecs ()Ljava/lang/Integer;
+	public final fun getConversationId ()Ljava/lang/String;
+	public final fun getStartTimeUnixSecs ()Ljava/lang/Long;
+	public final fun getStatus ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsClient {
+	public static final field DEFAULT_PAGE_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getConversation (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listConversations (Ljava/lang/String;ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listConversations$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsClient;Ljava/lang/String;ILjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsPage {
+	public fun <init> (Ljava/util/List;ZLjava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;ZLjava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsPage;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsPage;Ljava/util/List;ZLjava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsConversationsPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConversations ()Ljava/util/List;
+	public final fun getHasMore ()Z
+	public final fun getNextCursor ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsModels {
+	public static final field ELEVEN_FLASH_V2_5 Ljava/lang/String;
+	public static final field ELEVEN_MULTILINGUAL_V2 Ljava/lang/String;
+	public static final field ELEVEN_TURBO_V2_5 Ljava/lang/String;
+	public static final field INSTANCE Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsModels;
+	public static final field SCRIBE_V1 Ljava/lang/String;
+	public static final field SCRIBE_V1_EXPERIMENTAL Ljava/lang/String;
+	public static final field SCRIBE_V2 Ljava/lang/String;
+	public static final field SCRIBE_V2_REALTIME Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsRealtimeClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun connect (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun connect$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsRealtimeClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSpeechClient : io/github/ronjunevaldoz/genaiclient/SpeechClient {
+	public static final field STREAM_CHUNK_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun synthesizeSpeech (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun synthesizeSpeechStream (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRole ()Ljava/lang/String;
+	public final fun getTimeInCallSecs ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptionClient : io/github/ronjunevaldoz/genaiclient/TranscriptionClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun transcribe (Lio/github/ronjunevaldoz/genaiclient/TranscriptionRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoice {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoice;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoice;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCategory ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getLabels ()Ljava/util/Map;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPreviewUrl ()Ljava/lang/String;
+	public final fun getVoiceId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicesClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun addVoice (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun addVoice$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicesClient;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/Map;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun deleteVoice (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun editVoice (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editVoice$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicesClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun editVoiceSettings (Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVoice (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVoiceSettings (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listVoices (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/VoiceSample {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;[B)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()[B
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;[B)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/VoiceSample;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/VoiceSample;Ljava/lang/String;Ljava/lang/String;[BILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/VoiceSample;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBytes ()[B
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getMimeType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

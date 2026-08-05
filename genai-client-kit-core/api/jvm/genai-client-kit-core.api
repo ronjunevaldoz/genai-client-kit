@@ -1,0 +1,224 @@
+public abstract class io/github/ronjunevaldoz/genaiclient/GenAiError : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/GenAiError$ApiError : io/github/ronjunevaldoz/genaiclient/GenAiError {
+	public fun <init> (ILjava/lang/String;)V
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getStatusCode ()I
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/GenAiError$NetworkError : io/github/ronjunevaldoz/genaiclient/GenAiError {
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/GenAiError$RealtimeError : io/github/ronjunevaldoz/genaiclient/GenAiError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/GenAiError$SerializationError : io/github/ronjunevaldoz/genaiclient/GenAiError {
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/RealtimeEvent {
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeEvent$Audio : io/github/ronjunevaldoz/genaiclient/RealtimeEvent {
+	public fun <init> ([B)V
+	public final fun component1 ()[B
+	public final fun copy ([B)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Audio;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Audio;[BILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Audio;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBytes ()[B
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeEvent$Closed : io/github/ronjunevaldoz/genaiclient/RealtimeEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Closed;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Closed;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Closed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeEvent$Error : io/github/ronjunevaldoz/genaiclient/RealtimeEvent {
+	public fun <init> (Lio/github/ronjunevaldoz/genaiclient/GenAiError;)V
+	public final fun component1 ()Lio/github/ronjunevaldoz/genaiclient/GenAiError;
+	public final fun copy (Lio/github/ronjunevaldoz/genaiclient/GenAiError;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Error;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Error;Lio/github/ronjunevaldoz/genaiclient/GenAiError;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lio/github/ronjunevaldoz/genaiclient/GenAiError;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeEvent$Transcript : io/github/ronjunevaldoz/genaiclient/RealtimeEvent {
+	public fun <init> (Ljava/lang/String;Z)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/lang/String;Z)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Transcript;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Transcript;Ljava/lang/String;ZILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeEvent$Transcript;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isFinal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/RealtimeInputChunk {
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Audio : io/github/ronjunevaldoz/genaiclient/RealtimeInputChunk {
+	public fun <init> ([B)V
+	public final fun component1 ()[B
+	public final fun copy ([B)Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Audio;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Audio;[BILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Audio;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBytes ()[B
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Text : io/github/ronjunevaldoz/genaiclient/RealtimeInputChunk {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Text;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Text;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk$Text;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/RealtimeSession : java/lang/AutoCloseable {
+	public abstract fun close ()V
+	public abstract fun flush (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun send (Lio/github/ronjunevaldoz/genaiclient/RealtimeInputChunk;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/SpeechClient {
+	public abstract fun synthesizeSpeech (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun synthesizeSpeechStream (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/SpeechRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;)Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/SpeechRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInput ()Ljava/lang/String;
+	public final fun getModel ()Ljava/lang/String;
+	public final fun getResponseFormat ()Ljava/lang/String;
+	public final fun getVoice ()Ljava/lang/String;
+	public final fun getVoiceSettings ()Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/TimestampsGranularity : java/lang/Enum {
+	public static final field CHARACTER Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public static final field NONE Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public static final field WORD Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public static fun values ()[Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/TranscribedToken {
+	public fun <init> (Ljava/lang/String;DDLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;DDLjava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/TranscribedToken;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/TranscribedToken;Ljava/lang/String;DDLjava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/TranscribedToken;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEndSeconds ()D
+	public final fun getSpeakerId ()Ljava/lang/String;
+	public final fun getStartSeconds ()D
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/TranscriptionClient {
+	public abstract fun transcribe (Lio/github/ronjunevaldoz/genaiclient/TranscriptionRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/TranscriptionRequest {
+	public fun <init> ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;Z)V
+	public synthetic fun <init> ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()[B
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public final fun component8 ()Z
+	public final fun copy ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;Z)Lio/github/ronjunevaldoz/genaiclient/TranscriptionRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/TranscriptionRequest;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;ZILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/TranscriptionRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudio ()[B
+	public final fun getDiarize ()Z
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getLanguageCode ()Ljava/lang/String;
+	public final fun getMimeType ()Ljava/lang/String;
+	public final fun getModel ()Ljava/lang/String;
+	public final fun getPrompt ()Ljava/lang/String;
+	public final fun getTimestampsGranularity ()Lio/github/ronjunevaldoz/genaiclient/TimestampsGranularity;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/TranscriptionResult {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Double;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/util/List;)Lio/github/ronjunevaldoz/genaiclient/TranscriptionResult;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/TranscriptionResult;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/util/List;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/TranscriptionResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLanguageCode ()Ljava/lang/String;
+	public final fun getLanguageProbability ()Ljava/lang/Double;
+	public final fun getText ()Ljava/lang/String;
+	public final fun getTokens ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/VoiceSettings {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Double;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun component3 ()Ljava/lang/Double;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Boolean;)Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Boolean;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSimilarityBoost ()Ljava/lang/Double;
+	public final fun getSpeakerBoost ()Ljava/lang/Boolean;
+	public final fun getStability ()Ljava/lang/Double;
+	public final fun getStyle ()Ljava/lang/Double;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

@@ -1,0 +1,37 @@
+public final class io/github/ronjunevaldoz/genaiclient/bytedance/ByteDanceClient : io/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun generate (Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationClient {
+	public abstract fun generate (Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getModel ()Ljava/lang/String;
+	public final fun getPrompt ()Ljava/lang/String;
+	public final fun getSize ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationResult {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationResult;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationResult;Ljava/util/List;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/bytedance/ImageGenerationResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getImageUrls ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

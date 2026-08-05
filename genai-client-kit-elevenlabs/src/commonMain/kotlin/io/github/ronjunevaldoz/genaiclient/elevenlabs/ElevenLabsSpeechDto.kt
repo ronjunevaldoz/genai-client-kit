@@ -27,3 +27,11 @@ internal fun io.github.ronjunevaldoz.genaiclient.VoiceSettings?.toDto(): ElevenL
             useSpeakerBoost = it.speakerBoost,
         )
     }
+
+internal fun ElevenLabsVoiceSettingsDto.toVoiceSettings(): io.github.ronjunevaldoz.genaiclient.VoiceSettings =
+    io.github.ronjunevaldoz.genaiclient.VoiceSettings(
+        stability = stability,
+        similarityBoost = similarityBoost,
+        style = style,
+        speakerBoost = useSpeakerBoost,
+    )
