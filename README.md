@@ -7,8 +7,10 @@ Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 > Status: `0.1.0`, pre-1.0. Per SemVer, the public API may still change without a major
 > version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices,
 > Conversational AI agents (including knowledge base and Twilio outbound calling), speech-to-speech,
-> sound effects, audio isolation, dubbing, models listing, and account/subscription info.
-> Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
+> sound effects, audio isolation, dubbing, models listing, account/subscription info, text-to-voice
+> (voice design), the shared voice library, generation history, and forced alignment. Missing:
+> the Music API, pronunciation dictionaries, Projects/Studio, and webhooks. Suno and ByteDance
+> currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
 
@@ -33,7 +35,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient` |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient`, `ElevenLabsTextToVoiceClient` (voice design), `ElevenLabsVoiceLibraryClient`, `ElevenLabsHistoryClient`, `ElevenLabsForcedAlignmentClient` |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -152,6 +154,25 @@ val models = ElevenLabsModelsClient(apiKey = "...").listModels()
 val user = ElevenLabsUserClient(apiKey = "...")
 val subscription = user.getSubscription()
 println("${subscription.characterCount}/${subscription.characterLimit} characters used")
+```
+
+### Voice design, voice library, history, forced alignment
+
+```kotlin
+val textToVoice = ElevenLabsTextToVoiceClient(apiKey = "...")
+val previews = textToVoice.createPreviews(voiceDescription = "A calm, warm narrator")
+val newVoice = textToVoice.createVoiceFromPreview("Narrator", "A calm, warm narrator", previews.first())
+
+val library = ElevenLabsVoiceLibraryClient(apiKey = "...")
+val results = library.search(language = "en", gender = "female")
+library.addSharedVoice(results.voices.first().publicOwnerId, results.voices.first().voiceId, newName = "My Copy")
+
+val history = ElevenLabsHistoryClient(apiKey = "...")
+val page = history.listHistory()
+val audio = history.getHistoryItemAudio(page.items.first().historyItemId)
+
+val alignment = ElevenLabsForcedAlignmentClient(apiKey = "...")
+val timings = alignment.align(audio = clipBytes, filename = "clip.mp3", mimeType = "audio/mpeg", text = "Hello there")
 ```
 
 ## API surface rules

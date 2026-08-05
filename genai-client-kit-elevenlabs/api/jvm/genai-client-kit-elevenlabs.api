@@ -180,6 +180,61 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsDubb
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsForcedAlignmentClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun align ([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryClient {
+	public static final field DEFAULT_PAGE_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun deleteHistoryItem (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getHistoryItem (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getHistoryItemAudio (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun listHistory (ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun listHistory$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryClient;ILjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryItem {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Long;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryItem;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryItem;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentType ()Ljava/lang/String;
+	public final fun getDateUnix ()Ljava/lang/Long;
+	public final fun getHistoryItemId ()Ljava/lang/String;
+	public final fun getState ()Ljava/lang/String;
+	public final fun getText ()Ljava/lang/String;
+	public final fun getVoiceId ()Ljava/lang/String;
+	public final fun getVoiceName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryPage {
+	public fun <init> (Ljava/util/List;ZLjava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;ZLjava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryPage;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryPage;Ljava/util/List;ZLjava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsHistoryPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasMore ()Z
+	public final fun getItems ()Ljava/util/List;
+	public final fun getLastHistoryItemId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsKnowledgeBaseClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -311,6 +366,46 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsReal
 	public static synthetic fun connect$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsRealtimeClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/VoiceSettings;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoice {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoice;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoice;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCategory ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getGender ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPreviewUrl ()Ljava/lang/String;
+	public final fun getPublicOwnerId ()Ljava/lang/String;
+	public final fun getUseCase ()Ljava/lang/String;
+	public final fun getVoiceId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoicesPage {
+	public fun <init> (Ljava/util/List;Z)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/util/List;Z)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoicesPage;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoicesPage;Ljava/util/List;ZILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSharedVoicesPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasMore ()Z
+	public final fun getVoices ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSoundEffectsClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -354,6 +449,14 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsSubs
 	public final fun getVoiceLimit ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTextToVoiceClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun createPreviews (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createPreviews$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTextToVoiceClient;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun createVoiceFromPreview (Ljava/lang/String;Ljava/lang/String;Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicePreview;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsTranscriptTurn {
@@ -419,6 +522,32 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoic
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoiceLibraryClient {
+	public static final field DEFAULT_PAGE_SIZE I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun addSharedVoice (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun search (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun search$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoiceLibraryClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicePreview {
+	public fun <init> (Ljava/lang/String;[BLjava/lang/String;Ljava/lang/Double;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()[B
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Double;
+	public final fun copy (Ljava/lang/String;[BLjava/lang/String;Ljava/lang/Double;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicePreview;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicePreview;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/Double;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicePreview;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudio ()[B
+	public final fun getDurationSeconds ()Ljava/lang/Double;
+	public final fun getGeneratedVoiceId ()Ljava/lang/String;
+	public final fun getMediaType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoicesClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/ktor/client/HttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -431,6 +560,19 @@ public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ElevenLabsVoic
 	public final fun getVoice (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getVoiceSettings (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun listVoices (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/ForcedAlignmentResult {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ForcedAlignmentResult;
+	public static synthetic fun copy$default (Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ForcedAlignmentResult;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lio/github/ronjunevaldoz/genaiclient/elevenlabs/ForcedAlignmentResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCharacters ()Ljava/util/List;
+	public final fun getWords ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class io/github/ronjunevaldoz/genaiclient/elevenlabs/KnowledgeBaseDocumentType : java/lang/Enum {
