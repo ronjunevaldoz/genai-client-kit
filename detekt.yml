@@ -1,0 +1,28 @@
+build:
+  maxIssues: 0
+
+complexity:
+  LongMethod:
+    active: true
+    threshold: 60
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 7
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+  LargeClass:
+    active: true
+    threshold: 400
+  TooManyFunctions:
+    active: true
+    thresholdInClasses: 15
+
+comments:
+  UndocumentedPublicClass:
+    active: true
+    excludes: ['**/test/**', '**/*Test.kt']
+  UndocumentedPublicFunction:
+    active: true
+    excludes: ['**/test/**', '**/*Test.kt']
