@@ -6,7 +6,8 @@ Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 
 > Status: `0.1.0`, pre-1.0. Per SemVer, the public API may still change without a major
 > version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices,
-> Conversational AI agents, speech-to-speech, sound effects, audio isolation, and dubbing.
+> Conversational AI agents (including knowledge base and Twilio outbound calling), speech-to-speech,
+> sound effects, audio isolation, dubbing, models listing, and account/subscription info.
 > Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
@@ -32,7 +33,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient` |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient` |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -126,6 +127,31 @@ val dubbing = ElevenLabsDubbingClient(apiKey = "...")
 val job = dubbing.createDubbing(DubbingSource("clip.mp4", "video/mp4", videoBytes), targetLanguage = "es")
 // poll dubbing.getDubbingStatus(job.dubbingId) until status == "dubbed", then:
 val dubbedAudio = dubbing.getDubbedAudio(job.dubbingId, languageCode = "es")
+```
+
+### Conversational AI: knowledge base and outbound calling
+
+```kotlin
+val knowledgeBase = ElevenLabsKnowledgeBaseClient(apiKey = "...")
+val doc = knowledgeBase.createFromText(name = "FAQ", text = "Q: ... A: ...")
+
+val agents = ElevenLabsAgentsClient(apiKey = "...")
+val currentConfig = agents.getAgent(agent.agentId)["conversation_config"]!!.jsonObject
+agents.updateAgent(agent.agentId, currentConfig.withKnowledgeBaseDocument(doc))
+
+val calls = ElevenLabsOutboundCallClient(apiKey = "...")
+val phoneNumber = calls.listPhoneNumbers().first()
+calls.placeCall(agentId = agent.agentId, agentPhoneNumberId = phoneNumber.phoneNumberId, toNumber = "+15551234567")
+```
+
+### Models and account info
+
+```kotlin
+val models = ElevenLabsModelsClient(apiKey = "...").listModels()
+
+val user = ElevenLabsUserClient(apiKey = "...")
+val subscription = user.getSubscription()
+println("${subscription.characterCount}/${subscription.characterLimit} characters used")
 ```
 
 ## API surface rules

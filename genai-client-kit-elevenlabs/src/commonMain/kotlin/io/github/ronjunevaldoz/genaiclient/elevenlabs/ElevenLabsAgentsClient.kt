@@ -7,12 +7,14 @@ import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
+import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
 /**
  * Client for ElevenLabs' Conversational AI agents REST API. [conversationConfig] is passed through
@@ -54,6 +56,20 @@ public class ElevenLabsAgentsClient(
                 cursor?.let { parameter("cursor", it) }
             }
         }.body<ElevenLabsAgentsPageDto>().toPage()
+
+    /** Overwrites [agentId]'s `conversation_config` with [conversationConfig]. */
+    public suspend fun updateAgent(
+        agentId: String,
+        conversationConfig: JsonObject,
+    ) {
+        elevenLabsRequest {
+            httpClient.patch("$baseUrl/convai/agents/$agentId") {
+                header("xi-api-key", apiKey)
+                contentType(ContentType.Application.Json)
+                setBody(buildJsonObject { put("conversation_config", conversationConfig) })
+            }
+        }
+    }
 
     /** Permanently deletes the agent identified by [agentId]. */
     public suspend fun deleteAgent(agentId: String) {
