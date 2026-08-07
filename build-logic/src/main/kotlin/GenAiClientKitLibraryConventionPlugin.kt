@@ -37,7 +37,13 @@ class GenAiClientKitLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure(com.vanniktech.maven.publish.MavenPublishBaseExtension::class.java) {
                 publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-                signAllPublications()
+                // Signing requires a configured GPG signatory; skip it for local/dev publishing
+                // (publishToMavenLocal) and only require it when actually releasing to Central.
+                if (providers.gradleProperty("signingInMemoryKey").isPresent ||
+                    providers.systemProperty("signing.keyId").isPresent
+                ) {
+                    signAllPublications()
+                }
                 pom {
                     url.set("https://github.com/ronjunevaldoz/genai-client-kit")
                     inceptionYear.set("2026")

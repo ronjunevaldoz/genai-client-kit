@@ -19,7 +19,13 @@ dependencies {
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-    signAllPublications()
+    // Signing requires a configured GPG signatory; skip it for local/dev publishing
+    // (publishToMavenLocal) and only require it when actually releasing to Central.
+    if (providers.gradleProperty("signingInMemoryKey").isPresent ||
+        providers.systemProperty("signing.keyId").isPresent
+    ) {
+        signAllPublications()
+    }
 
     pom {
         name = "genai-client-kit-bom"
