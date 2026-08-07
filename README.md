@@ -206,6 +206,21 @@ val audio = projects.getChapterSnapshotAudio(project.projectId, chapters.first()
 val webhooks = ElevenLabsWebhooksClient(apiKey = "...").listWebhooks()
 ```
 
+## Testing
+
+`genai-client-kit-elevenlabs` has 23 test files / 67 tests covering every client method against a
+mocked Ktor engine (`ktor-client-mock`): happy path, streaming chunk reassembly, and the shared
+`GenAiError` mapping (404, 500, transport failure) tested once rather than duplicated per client.
+
+One gap: `ElevenLabsRealtimeClient`'s live WebSocket session has no integration test —
+`ktor-client-mock` doesn't support the WS upgrade handshake. `ElevenLabsRealtimeDtoTest` instead
+locks down the outbound/inbound message wire contract (serialization round-trip) that the session
+encodes and decodes.
+
+```bash
+./gradlew :genai-client-kit-elevenlabs:jvmTest
+```
+
 ## API surface rules
 
 - `explicitApi()` is enforced on every published module.
