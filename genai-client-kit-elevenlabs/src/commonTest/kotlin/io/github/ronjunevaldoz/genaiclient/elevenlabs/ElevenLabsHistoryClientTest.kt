@@ -36,4 +36,53 @@ class ElevenLabsHistoryClientTest {
             assertEquals("Hello", page.items[0].text)
             assertEquals("h1", page.lastHistoryItemId)
         }
+
+    @Test
+    fun `getHistoryItem maps a single item`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """{"history_item_id":"h1","voice_id":"v1","text":"Hello"}""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsHistoryClient(apiKey = "test-key", httpClient = httpClient)
+
+            val item = client.getHistoryItem("h1")
+
+            assertEquals("Hello", item.text)
+        }
+
+    @Test
+    fun `getHistoryItemAudio returns the raw audio bytes`() =
+        runTest {
+            val audioBytes = byteArrayOf(1, 2, 3)
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = audioBytes,
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "audio/mpeg"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsHistoryClient(apiKey = "test-key", httpClient = httpClient)
+
+            val audio = client.getHistoryItemAudio("h1")
+
+            assertEquals(audioBytes.toList(), audio.toList())
+        }
+
+    @Test
+    fun `deleteHistoryItem completes without throwing`() =
+        runTest {
+            val engine = MockEngine { _ -> respond(content = "", status = HttpStatusCode.OK) }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsHistoryClient(apiKey = "test-key", httpClient = httpClient)
+
+            client.deleteHistoryItem("h1")
+        }
 }

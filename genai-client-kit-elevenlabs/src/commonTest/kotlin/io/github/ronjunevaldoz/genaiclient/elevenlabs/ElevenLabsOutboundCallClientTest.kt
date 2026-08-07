@@ -33,4 +33,24 @@ class ElevenLabsOutboundCallClientTest {
             assertTrue(result.success)
             assertEquals("conv_123", result.conversationId)
         }
+
+    @Test
+    fun `listPhoneNumbers maps every number`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """[{"phone_number_id":"phone_1","phone_number":"+15551234567","label":"Support"}]""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsOutboundCallClient(apiKey = "test-key", httpClient = httpClient)
+
+            val numbers = client.listPhoneNumbers()
+
+            assertEquals(1, numbers.size)
+            assertEquals("Support", numbers[0].label)
+        }
 }

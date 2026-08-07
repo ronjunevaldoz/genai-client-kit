@@ -35,4 +35,24 @@ class ElevenLabsTextToVoiceClientTest {
             assertEquals("gen_1", previews[0].generatedVoiceId)
             assertContentEquals("hi".toByteArray(), previews[0].audio)
         }
+
+    @Test
+    fun `createVoiceFromPreview maps the saved voice`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """{"voice_id":"v_new","name":"Narrator"}""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsTextToVoiceClient(apiKey = "test-key", httpClient = httpClient)
+            val preview = ElevenLabsVoicePreview("gen_1", byteArrayOf(1, 2, 3), "audio/mpeg", 3.0)
+
+            val voice = client.createVoiceFromPreview("Narrator", "A calm, warm narrator", preview)
+
+            assertEquals("v_new", voice.voiceId)
+        }
 }

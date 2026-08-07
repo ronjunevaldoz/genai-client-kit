@@ -36,4 +36,44 @@ class ElevenLabsDubbingClientTest {
             assertEquals("dub_123", job.dubbingId)
             assertEquals(42.0, job.expectedDurationSeconds)
         }
+
+    @Test
+    fun `getDubbingStatus maps status fields`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """{"dubbing_id":"dub_123","status":"dubbed","target_languages":["es"]}""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsDubbingClient(apiKey = "test-key", httpClient = httpClient)
+
+            val status = client.getDubbingStatus("dub_123")
+
+            assertEquals("dubbed", status.status)
+            assertEquals(listOf("es"), status.targetLanguages)
+        }
+
+    @Test
+    fun `getDubbedAudio returns the raw audio bytes`() =
+        runTest {
+            val audioBytes = byteArrayOf(1, 2, 3, 4)
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = audioBytes,
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "audio/mpeg"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsDubbingClient(apiKey = "test-key", httpClient = httpClient)
+
+            val audio = client.getDubbedAudio("dub_123", languageCode = "es")
+
+            assertEquals(audioBytes.toList(), audio.toList())
+        }
 }

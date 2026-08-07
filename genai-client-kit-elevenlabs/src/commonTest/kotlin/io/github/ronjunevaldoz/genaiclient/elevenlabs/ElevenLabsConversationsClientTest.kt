@@ -11,49 +11,51 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 
-class ElevenLabsVoiceLibraryClientTest {
+class ElevenLabsConversationsClientTest {
     @Test
-    fun `search maps shared voices`() =
+    fun `listConversations maps every summary`() =
         runTest {
             val engine =
                 MockEngine { _ ->
                     respond(
                         content =
-                            """{"voices":[{"voice_id":"v1","public_owner_id":"owner1","name":"Narrator",
-                            |"language":"en","gender":"male"}],"has_more":false}
+                            """{"conversations":[{"conversation_id":"conv_1","agent_id":"agent_1","status":"done",
+                            |"start_time_unix_secs":1700000000,"call_duration_secs":42}],"has_more":false}
                             """.trimMargin(),
                         status = HttpStatusCode.OK,
                         headers = headersOf(HttpHeaders.ContentType, "application/json"),
                     )
                 }
             val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
-            val client = ElevenLabsVoiceLibraryClient(apiKey = "test-key", httpClient = httpClient)
+            val client = ElevenLabsConversationsClient(apiKey = "test-key", httpClient = httpClient)
 
-            val page = client.search(language = "en")
+            val page = client.listConversations(agentId = "agent_1")
 
-            assertEquals(1, page.voices.size)
-            assertEquals("Narrator", page.voices[0].name)
-            assertFalse(page.hasMore)
+            assertEquals(1, page.conversations.size)
+            assertEquals(42, page.conversations[0].callDurationSecs)
         }
 
     @Test
-    fun `addSharedVoice maps the newly added voice`() =
+    fun `getConversation maps the transcript`() =
         runTest {
             val engine =
                 MockEngine { _ ->
                     respond(
-                        content = """{"voice_id":"v1","name":"My Copy"}""",
+                        content =
+                            """{"conversation_id":"conv_1","agent_id":"agent_1","status":"done",
+                            |"transcript":[{"role":"agent","message":"Hi there","time_in_call_secs":1}]}
+                            """.trimMargin(),
                         status = HttpStatusCode.OK,
                         headers = headersOf(HttpHeaders.ContentType, "application/json"),
                     )
                 }
             val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
-            val client = ElevenLabsVoiceLibraryClient(apiKey = "test-key", httpClient = httpClient)
+            val client = ElevenLabsConversationsClient(apiKey = "test-key", httpClient = httpClient)
 
-            val voice = client.addSharedVoice(publicOwnerId = "owner1", voiceId = "v1", newName = "My Copy")
+            val detail = client.getConversation("conv_1")
 
-            assertEquals("My Copy", voice.name)
+            assertEquals(1, detail.transcript.size)
+            assertEquals("Hi there", detail.transcript[0].message)
         }
 }

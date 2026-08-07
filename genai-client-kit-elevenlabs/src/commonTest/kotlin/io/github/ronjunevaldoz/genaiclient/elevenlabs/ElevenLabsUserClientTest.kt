@@ -33,4 +33,24 @@ class ElevenLabsUserClientTest {
             assertEquals(1000, subscription.characterCount)
             assertEquals(100000, subscription.characterLimit)
         }
+
+    @Test
+    fun `getUser maps subscription and new-user flag`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """{"is_new_user":false,"subscription":{"tier":"creator","character_count":1000,"character_limit":100000}}""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsUserClient(apiKey = "test-key", httpClient = httpClient)
+
+            val user = client.getUser()
+
+            assertEquals(false, user.isNewUser)
+            assertEquals("creator", user.subscription?.tier)
+        }
 }

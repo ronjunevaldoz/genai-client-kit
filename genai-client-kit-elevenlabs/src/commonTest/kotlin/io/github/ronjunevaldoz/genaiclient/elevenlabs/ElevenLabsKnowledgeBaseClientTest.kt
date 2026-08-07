@@ -38,6 +38,35 @@ class ElevenLabsKnowledgeBaseClientTest {
         }
 
     @Test
+    fun `createFromUrl returns the new document id`() =
+        runTest {
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = """{"id":"doc_456","name":"Docs Site"}""",
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "application/json"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsKnowledgeBaseClient(apiKey = "test-key", httpClient = httpClient)
+
+            val document = client.createFromUrl(url = "https://example.com/docs", name = "Docs Site")
+
+            assertEquals("doc_456", document.id)
+        }
+
+    @Test
+    fun `deleteDocument completes without throwing`() =
+        runTest {
+            val engine = MockEngine { _ -> respond(content = "", status = HttpStatusCode.OK) }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsKnowledgeBaseClient(apiKey = "test-key", httpClient = httpClient)
+
+            client.deleteDocument("doc_123")
+        }
+
+    @Test
     fun `withKnowledgeBaseDocument appends into agent prompt knowledge_base`() {
         val emptyConfig = Json.parseToJsonElement("""{"agent":{"prompt":{"prompt":"You are helpful."}}}""").jsonObject
 

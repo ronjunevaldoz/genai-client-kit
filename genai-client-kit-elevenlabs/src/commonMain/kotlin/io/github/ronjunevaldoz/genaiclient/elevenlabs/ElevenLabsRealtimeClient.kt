@@ -59,7 +59,7 @@ public class ElevenLabsRealtimeClient(
     }
 
     private companion object {
-        val json = Json { ignoreUnknownKeys = true }
+        val json = Json { ignoreUnknownKeys = true; explicitNulls = false }
     }
 }
 
@@ -67,7 +67,7 @@ private class ElevenLabsRealtimeSession(
     private val session: DefaultClientWebSocketSession,
 ) : RealtimeSession {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = Json { ignoreUnknownKeys = true; explicitNulls = false }
     private val _events = MutableSharedFlow<RealtimeEvent>(extraBufferCapacity = EVENT_BUFFER_CAPACITY)
     override val events = _events.asSharedFlow()
 

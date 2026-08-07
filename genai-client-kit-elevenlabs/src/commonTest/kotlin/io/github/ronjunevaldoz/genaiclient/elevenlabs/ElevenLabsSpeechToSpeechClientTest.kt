@@ -9,6 +9,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.utils.io.core.toByteArray
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
@@ -41,5 +42,35 @@ class ElevenLabsSpeechToSpeechClientTest {
                 )
 
             assertContentEquals(audioBytes, result)
+        }
+
+    @Test
+    fun `convertStream emits chunks that reassemble to the full audio`() =
+        runTest {
+            val audioBytes = "fake-streamed-converted-audio".toByteArray()
+            val engine =
+                MockEngine { _ ->
+                    respond(
+                        content = audioBytes,
+                        status = HttpStatusCode.OK,
+                        headers = headersOf(HttpHeaders.ContentType, "audio/mpeg"),
+                    )
+                }
+            val httpClient = HttpClient(engine) { install(ContentNegotiation) { json() } }
+            val client = ElevenLabsSpeechToSpeechClient(apiKey = "test-key", httpClient = httpClient)
+
+            val chunks =
+                client
+                    .convertStream(
+                        SpeechToSpeechRequest(
+                            audio = byteArrayOf(1, 2, 3),
+                            filename = "input.mp3",
+                            mimeType = "audio/mpeg",
+                            voiceId = "voice-id",
+                            model = ElevenLabsModels.ELEVEN_MULTILINGUAL_V2,
+                        ),
+                    ).toList()
+
+            assertContentEquals(audioBytes, chunks.reduce { acc, chunk -> acc + chunk })
         }
 }
