@@ -5,12 +5,13 @@ A Kotlin Multiplatform client library for generative media APIs — ElevenLabs (
 Android, iOS (arm64 + simulator arm64), JS, and WasmJs.
 
 > Status: `0.1.0`, pre-1.0. Per SemVer, the public API may still change without a major
-> version bump until `1.0.0` ships. ElevenLabs covers STT, TTS, realtime streaming, voices,
-> Conversational AI agents (including knowledge base and Twilio outbound calling), speech-to-speech,
-> sound effects, audio isolation, dubbing, models listing, account/subscription info, text-to-voice
-> (voice design), the shared voice library, generation history, forced alignment, the Music API,
-> and pronunciation dictionaries. Missing: Projects/Studio and webhooks. Suno and ByteDance
-> currently ship as contract-only stubs (see [Modules](#modules)).
+> version bump until `1.0.0` ships. ElevenLabs's full public REST surface is covered: STT, TTS,
+> realtime streaming, voices, Conversational AI agents (including knowledge base and Twilio
+> outbound calling), speech-to-speech, sound effects, audio isolation, dubbing, models listing,
+> account/subscription info, text-to-voice, the shared voice library, generation history, forced
+> alignment, the Music API, pronunciation dictionaries, and Studio projects. Webhook listing is
+> covered; webhook creation/update/deletion is a dashboard-only action with no public REST endpoint.
+> Suno and ByteDance currently ship as contract-only stubs (see [Modules](#modules)).
 
 ## Install
 
@@ -35,7 +36,7 @@ dependencies {
 |---|---|
 | `genai-client-kit-core` | Shared contracts: `TranscriptionClient`, `SpeechClient`, `RealtimeSession`, `GenAiError` |
 | `genai-client-kit-network` | Shared Ktor HTTP + WebSocket client |
-| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient`, `ElevenLabsTextToVoiceClient` (voice design), `ElevenLabsVoiceLibraryClient`, `ElevenLabsHistoryClient`, `ElevenLabsForcedAlignmentClient`, `ElevenLabsMusicClient`, `ElevenLabsPronunciationDictionariesClient` |
+| `genai-client-kit-elevenlabs` | `ElevenLabsTranscriptionClient` (Scribe STT), `ElevenLabsSpeechClient` (TTS), `ElevenLabsRealtimeClient` (realtime streaming TTS), `ElevenLabsVoicesClient` (voice CRUD/cloning), `ElevenLabsAgentsClient` + `ElevenLabsConversationsClient` + `ElevenLabsKnowledgeBaseClient` + `ElevenLabsOutboundCallClient` (Conversational AI), `ElevenLabsSpeechToSpeechClient` (voice changer), `ElevenLabsSoundEffectsClient`, `ElevenLabsAudioIsolationClient`, `ElevenLabsDubbingClient`, `ElevenLabsModelsClient`, `ElevenLabsUserClient`, `ElevenLabsTextToVoiceClient` (voice design), `ElevenLabsVoiceLibraryClient`, `ElevenLabsHistoryClient`, `ElevenLabsForcedAlignmentClient`, `ElevenLabsMusicClient`, `ElevenLabsPronunciationDictionariesClient`, `ElevenLabsProjectsClient` (Studio), `ElevenLabsWebhooksClient` |
 | `genai-client-kit-suno` | `MusicGenerationClient` contract; `SunoClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bytedance` | `ImageGenerationClient` contract; `ByteDanceClient` is a stub pending endpoint confirmation |
 | `genai-client-kit-bom` | Version-aligns all of the above |
@@ -190,6 +191,19 @@ val dictionary = dictionaries.createFromRules(
     rules = listOf(PronunciationRule("Kubernetes", PronunciationRuleType.ALIAS, alias = "koo-ber-NET-eez")),
 )
 // then pass dictionary.id into a TTS/dubbing request via provider-specific options once supported
+```
+
+### Studio projects and webhooks
+
+```kotlin
+val projects = ElevenLabsProjectsClient(apiKey = "...")
+val project = projects.createProject(name = "My Audiobook", defaultParagraphVoiceId = "voice-id")
+projects.convertProject(project.projectId)
+val chapters = projects.listChapters(project.projectId)
+val snapshots = projects.listChapterSnapshots(project.projectId, chapters.first().chapterId)
+val audio = projects.getChapterSnapshotAudio(project.projectId, chapters.first().chapterId, snapshots.first().snapshotId)
+
+val webhooks = ElevenLabsWebhooksClient(apiKey = "...").listWebhooks()
 ```
 
 ## API surface rules
